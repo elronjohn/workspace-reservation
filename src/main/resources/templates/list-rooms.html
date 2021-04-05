@@ -1,0 +1,115 @@
+	<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Rooms</title>
+</head>
+<body>
+
+	<div>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		  <ul class="navbar-nav">
+		  	<li class="nav-item">
+		      <h3><span class="badge badge-dark">Workspace Reservation</span></h3>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="#"> </a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" th:href="@{/index/reservation}">Reservations</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" th:href="@{/index/reserved-rooms(keyword)}">Reserved Rooms</a>
+		    </li>
+		    <li class="nav-item active">
+		      <a th:if="${session.accType == 'staff' || session.accType == 'admin'}" 
+		      	class="nav-link" th:href="@{/index/rooms}">Rooms</a>
+		    </li>
+		    <li class="nav-item">
+		    <a class="nav-link" 
+			      th:if="${session.accType == 'admin'}"
+			      th:href="@{/index/accounts}">Accounts</a>
+		      <a th:if="${session.accType == 'staff' || session.accType == 'guest'}"
+		       th:href=
+				"@{/index/updateGuestOrStaffAccount(accountId=${session.accId})}"
+					class="nav-link">
+				My Account
+				</a>
+		    </li>
+		    <ul class="navbar-right" style="position: absolute; right: 20px;">
+				<li class="nav-item active">
+			      <a class="nav-link" th:href="@{/index/logout}">Logout</a>
+			    </li>
+		   </ul>
+		  </ul>
+		</nav>
+	</div>
+	
+	<br>
+	
+	<div class="container">
+	  <h1 th:text="${session.name + ' ' + '(' +session.accType+ ')'}"></h1>
+	  <h2>Rooms</h2>
+	  <p th:text="'Date: ' + ${dateNow}"/>
+	  
+	  <div >
+		<a th:href="@{/index/addRoom}" class="btn btn-success btn-lg mb-2">
+		Add Room
+		</a>
+	</div>
+	  <table class="table table-hover table-striped table-bordered">
+	    <thead class="thead-dark">
+	      <tr>
+	      	<th>Id</th>
+	        <th>Room No.</th>
+	        <th>Room Type</th>
+	        <th>Price</th>
+	        <th>Status</th>
+	        <th>Action</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="tempRoom : ${rooms}">
+	        <td th:text="${tempRoom.room_id}"/>
+	        <td th:text="${tempRoom.room_number}"/>
+	        <td th:text="${tempRoom.room_type}"/>
+	        <td th:text="${tempRoom.price}"/>
+	        <td th:text="${tempRoom.status}"/>
+	        <td>
+				<a
+						class="btn btn-info" 
+						th:href="@{/index/updateRoom(roomId=${tempRoom.room_id})}"
+						th:if="${tempRoom.status == 'Available'}">
+						Update
+				</a>
+				<a
+						class="btn btn-info" 
+						th:href="@{/index/updateRoom(roomId=${tempRoom.room_id})}"
+						onclick="if(!(confirm('It will cancel the Reservation, Proceed?'))) return false"
+						th:if="${tempRoom.status == 'Reserved'}">
+						Update
+				</a>
+				&nbsp
+				<a
+						class="btn btn-danger" 
+						th:href="@{/index/deleteRoom(roomId=${tempRoom.room_id})}"
+						onclick="if(!(confirm('Are you sure you want to delete this room?'))) return false">
+						Delete
+				</a>
+			</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+	
+	
+	
+</body>
+</html>

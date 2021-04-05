@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Reserve Room</title>
+</head>
+<body style="background-color:#202020;color: white">
+	<div >
+		<br>
+		<a th:href="@{/index/reservation}" 
+		class="btn btn-info btn-lg mb-5">
+		<i class="fas fa-arrow-left"></i> Back 
+		</a>
+	</div>
+		<p align="center" class="display-4">Reserve Room</p>
+		<form align="center" th:action="@{/index/saveReservation}"
+				th:object="${reservation}" 
+				method="POST">
+				
+			
+		  <div class="form-row col-md-12 " >
+		  	<p class="font-weight-bold col-md-12"> Guest Details : </p><br>
+		  	
+		  	<div class="form-group col-md-4"></div>
+		    <div class="form-group col-md-4">
+		      <label for="inputName">Name</label>
+		      <input type="text" class="form-control"
+		      			th:name="reservedTo" th:id="reservedTo"
+		      			th:value="${session.name}" readonly>
+		    </div>
+		    <div class="form-group col-md-4"></div>
+		    
+		  </div>
+		  
+		  <br>
+		  
+		  <div class="form-row col-md-12">
+		  	<p class="font-weight-bold col-md-12"> Room Details : </p><br>
+		  
+		  	<div class="form-group col-md-3"></div>
+		  	 
+		    <div class="form-group col-md-3">
+		      <label for="inputRoomDescription">Room Details</label>
+		      <input type="text" class="form-control"
+		      			th:name="roomDetails" th:id="roomDetails"
+		      			th:value="${'Room Number: ' + rooms.room_number + ', Room Type: ' + rooms.room_type}" readonly>
+		    </div>
+		    
+		    <div class="form-group col-md-3">
+		      <label for="inputAmount">Price</label>
+		      <input type="text" class="form-control"
+		      			th:name="amount" th:id="amount" th:value="${rooms.price}" readonly>
+		    </div>
+		    
+		    <div class="form-group col-md-3"></div>
+		    
+		  </div>
+		  
+		  
+		  <div class="form-row col-md-12">
+			
+			<div class="form-group col-md-3"></div>
+			
+		    <div class="form-group col-md-2">
+		      <label for="inputReservedBy">Reserved by</label>
+		      <input type="text" class="form-control"
+		      			th:name="reservedBy" th:id="reservedBy"
+		      			th:value="${session.name}" readonly>
+		    </div>
+		    
+		    <div class="form-group col-md-2">
+		      <label for="inputStartDate">Start Date</label>
+		      <input type="date" class="form-control"
+		      			th:field="*{startDate}" >	
+		    </div>
+		    
+		    <div class="form-group col-md-2">
+		      <label for="inputEndDate">End Date</label>
+		      <input type="date" class="form-control"
+		      			th:field="*{endDate}">
+		    </div>
+		    
+		    <div class="form-group col-md-3"></div>
+		  </div>
+		  <br>
+		  <button  type="submit" class="btn btn-info col-md-2"
+		  >Reserve</button>
+		</form>
+</body>
+</html>
