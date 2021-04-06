@@ -29,14 +29,14 @@
 				
 			<div align="center">
 				<input type="hidden" th:field="*{room_id}"
-					class="form-control mb-3 col-3" placeholder="Room Id" required >
+					class="form-control mb-3 col-3 border border-dark" placeholder="Room Id" required >
 				
 				<input type="text" th:field="*{room_number}"
-					class="form-control mb-3 col-3" placeholder="Room Number">
+					class="form-control mb-3 col-3 border border-dark" placeholder="Room Number">
 				
 				<select  id="roomType" 
 							name="roomType" 
-							class="form-control mb-3 col-3" 
+							class="form-control mb-3 col-3 border border-dark" 
 							th:field="*{room_type}">
 							
 				  <option th:each=" i : ${roomType}" 
@@ -46,7 +46,7 @@
 				</select>
 					
 				<input type="text" th:field="*{price}"
-				class="form-control mb-3 col-3" placeholder="Price">
+				class="form-control mb-3 col-3 border border-dark" placeholder="Price">
 						
 				<button type="submit" class="btn mb-2 btn-info col-1">Save</button>
 				

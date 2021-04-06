@@ -11,10 +11,10 @@
 
 	<title>Reservations</title>
 </head>
-<body>
+<body style="background-color: #f7f7f7;color: #202020">
 
 	<div>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
 		  <ul class="navbar-nav">
 		  	<li class="nav-item">
 		      <h3><span class="badge badge-dark">Workspace Reservation</span></h3>
@@ -59,9 +59,8 @@
 	  <h1 th:text="${user.firstName + ' ' + user.lastName + ' ' + '(' +session.accType+ ')'}"></h1>
 	  <h2>Reservation</h2>
 	  <p th:text="'Date: ' + ${dateNow}"/>
-	  <table class="table table-hover table-striped table-bordered"
-	  >
-	    <thead class="thead-dark">
+	  <table class="table bg-white table-hover table-striped table-sm border border-dark">
+	    <thead class="bg-dark text-white">
 	      <tr>
 	      	<th>Id</th>
 	        <th>Room No.</th>

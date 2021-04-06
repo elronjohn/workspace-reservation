@@ -39,35 +39,35 @@
 				
 			<div align="center" class="col-12">
 				<input type="hidden" th:field="*{account_id}"
-					class="form-control mb-1 col-4" placeholder="First name" required >
+					class="form-control mb-1 col-4 border border-dark" placeholder="Id" required >
 		
 				<label class=" mb-1 ">First Name</label>
 				<input type="text" th:field="*{firstName}"
-					class="form-control mb-1 col-4" placeholder="First name" required >
+					class="form-control mb-1 col-4 border border-dark" placeholder="First name" required >
 
 				<label class=" mb-1">Last Name</label>
 				<input type="text" th:field="*{lastName}"
-					class="form-control mb-1 col-4" placeholder="Last name" required>
+					class="form-control mb-1 col-4 border border-dark" placeholder="Last name" required>
 				
 				<label class=" mb-1">Contact Number</label>
 				<input type="text" th:field="*{contact}"
-					class="form-control mb-1 col-4" placeholder="Contact" required>
+					class="form-control mb-1 col-4 border border-dark" placeholder="Contact" required>
 				
 				<label class=" mb-1">Email</label>
 				<input type="email" th:field="*{email}"
-					class="form-control mb-1 col-4" placeholder="Email" required>
+					class="form-control mb-1 col-4 border border-dark" placeholder="Email" required>
 				
 				<label class=" mb-1">Username</label>
 				<input type="text" th:field="*{username}"
-				class="form-control mb-1 col-4" placeholder="Username" required>
+				class="form-control mb-1 col-4 border border-dark" placeholder="Username" required>
 				
 				<input type="hidden" th:field="*{account_type}" th:value="${account.account_type}"
-					class="form-control mb-1 col-4" placeholder="Password" required>
+					class="form-control mb-1 col-4 border border-dark" placeholder="Password" required>
 				
 				<label class=" mb-1">Password</label>
 				<input type="password" th:field="*{password}"
-					class="form-control mb-1 col-4" placeholder="Password" required>
-						
+					class="form-control mb-1 col-4 border border-dark" placeholder="Password" required>
+						<br>
 				<button type="submit" class="btn btn-info col-2">Save</button>
 				
 			</div>

@@ -11,7 +11,7 @@
 	
 	<title>Reserved Rooms</title>
 </head>
-<body>
+<body style="background-color: #f7f7f7;color: #202020">body>
 
 	<div>
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -63,10 +63,10 @@
 	  <form th:action="@{/index/reserved-rooms}">
       	<div class="input-group mb-4 col-4" style="float:right">
 		  <input type="date" name="keyword" id="keyword" th:value="${keyword}" 
-		  class="form-control rounded" placeholder="Search by date" aria-label="Search"
+		  class="form-control rounded border border-dark" placeholder="Search by date" aria-label="Search"
 		    aria-describedby="search-addon" />
-		  <button type="submit" class="btn btn-outline-primary" style="margin-left:5px; margin-right:5px;">search</button>
-		  <button type="button" class="btn btn-outline-primary" onclick="clearSearch()">clear</button>
+		  <button type="submit" class="btn btn-info" style="margin-left:5px; margin-right:5px;">Search</button>
+		  <button type="button" class="btn btn-danger" onclick="clearSearch()">Clear</button>
 		</div>
       </form>
       <script type="text/javascript">
@@ -74,8 +74,8 @@
 		        window.location = "[[@{/index/reserved-rooms?keyword}]]";
 		    }
 	</script>
-	  <table class="table table-hover table-striped table-bordered">
-	    <thead class="thead-dark">
+	   <table class="table bg-white table-hover table-striped table-sm border border-dark">
+	    <thead class="bg-dark text-white">
 	      <tr>
 	      	<th>Id</th>
 	        <th>Room Details</th>

@@ -31,7 +31,7 @@
 		  	<div class="form-group col-md-4"></div>
 		    <div class="form-group col-md-4">
 		      <label for="inputName">Name</label>
-		      <input type="text" class="form-control"
+		      <input type="text" class="form-control border border-dark"
 		      			th:name="reservedTo" th:id="reservedTo"
 		      			th:value="${session.name}" readonly>
 		    </div>
@@ -48,14 +48,14 @@
 		  	 
 		    <div class="form-group col-md-3">
 		      <label for="inputRoomDescription">Room Details</label>
-		      <input type="text" class="form-control"
+		      <input type="text" class="form-control border border-dark"
 		      			th:name="roomDetails" th:id="roomDetails"
 		      			th:value="${'Room Number: ' + rooms.room_number + ', Room Type: ' + rooms.room_type}" readonly>
 		    </div>
 		    
 		    <div class="form-group col-md-3">
 		      <label for="inputAmount">Price</label>
-		      <input type="text" class="form-control"
+		      <input type="text" class="form-control border border-dark"
 		      			th:name="amount" th:id="amount" th:value="${rooms.price}" readonly>
 		    </div>
 		    
@@ -70,20 +70,20 @@
 			
 		    <div class="form-group col-md-2">
 		      <label for="inputReservedBy">Reserved by</label>
-		      <input type="text" class="form-control"
+		      <input type="text" class="form-control border border-dark"
 		      			th:name="reservedBy" th:id="reservedBy"
 		      			th:value="${session.name}" readonly>
 		    </div>
 		    
 		    <div class="form-group col-md-2">
 		      <label for="inputStartDate">Start Date</label>
-		      <input type="date" class="form-control"
+		      <input type="date" class="form-control border border-dark"
 		      			th:field="*{startDate}" >	
 		    </div>
 		    
 		    <div class="form-group col-md-2">
 		      <label for="inputEndDate">End Date</label>
-		      <input type="date" class="form-control"
+		      <input type="date" class="form-control border border-dark"
 		      			th:field="*{endDate}">
 		    </div>
 		    
