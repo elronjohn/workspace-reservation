@@ -56,7 +56,7 @@
 	<br>
 	
 	<div class="container">
-	  <h1 th:text="${session.name + ' ' + '(' +session.accType+ ')'}"></h1>
+	  <h1 th:text="${user.firstName + ' ' + user.lastName + ' ' + '(' +session.accType+ ')'}"></h1>
 	  <h2>Reservation</h2>
 	  <p th:text="'Date: ' + ${dateNow}"/>
 	  <table class="table table-hover table-striped table-bordered"

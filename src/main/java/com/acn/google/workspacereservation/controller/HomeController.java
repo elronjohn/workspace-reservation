@@ -108,7 +108,7 @@ public class HomeController {
 				httpSession.setAttribute("name", acc.getFirstName()+" "+acc.getLastName());
 				httpSession.setAttribute("accType", acc.getAccount_type());
 				httpSession.setAttribute("accId", acc.getAccount_id());
-				userId = acc.getAccount_id();				
+				userId = acc.getAccount_id();		
 				return"redirect:/index/reservation";
 			}
 		}
@@ -121,12 +121,15 @@ public class HomeController {
 		if(httpSession.getAttribute("username") == null) {
 			return"redirect:/index";
 		}
+		Account user = accountService.findById(userId);
+		model.addAttribute("user", user);
 		LocalDateTime today = LocalDateTime.now();
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("\"EEE, MMM dd, ''yyyy\"");
 		model.addAttribute("dateNow", today.format(dateFormat));
 		List<Rooms> theRooms = roomService.findAll();
 		model.addAttribute("rooms", theRooms);
 		model.addAttribute("roomSize", theRooms.size());
+		
 		return "reservation";
 	}
 
@@ -164,6 +167,8 @@ public class HomeController {
 		if(httpSession.getAttribute("username") == null) {
 			return"redirect:/index";
 		}
+		Account user = accountService.findById(userId);
+		model.addAttribute("user", user);
 		LocalDateTime today = LocalDateTime.now();
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("\"EEE, MMM dd, ''yyyy\"");
 		model.addAttribute("dateNow", today.format(dateFormat));
@@ -210,13 +215,16 @@ public class HomeController {
 	//--------------------------------------------Rooms----------------------------
 	@GetMapping("/rooms")
 	public String roomsView(Model model, HttpSession httpSession) {
+		log.info("Account Type: " + httpSession.getAttribute("accType"));
 		if(httpSession.getAttribute("username") == null) {
-		return"redirect:/index";
+			return"redirect:/index";
 		}
+		Account user = accountService.findById(userId);
+		model.addAttribute("user", user);
 		LocalDateTime today = LocalDateTime.now();
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("\"EEE, MMM dd, ''yyyy\"");
 		model.addAttribute("dateNow", today.format(dateFormat));
-		List<Rooms> theRooms = roomService.findAll();	
+		List<Rooms> theRooms = roomService.findAll();
 		model.addAttribute("rooms", theRooms);
 		return "list-rooms";
 	}
@@ -270,6 +278,8 @@ public class HomeController {
 		if(httpSession.getAttribute("username") == null) {
 		return"redirect:/index";
 		}
+		Account user = accountService.findById(userId);
+		model.addAttribute("user", user);
 		LocalDateTime today = LocalDateTime.now();
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("\"EEE, MMM dd, ''yyyy\"");
 		model.addAttribute("dateNow", today.format(dateFormat));

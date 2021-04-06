@@ -54,8 +54,8 @@
 	
 	<br>
 	
-	<div class="container">
-	  <h1 th:text="${session.name + ' ' + '(' +session.accType+ ')'}"></h1>
+	<div class="container" th:if="${session.accType == 'staff' || session.accType == 'admin'}" >
+	  <h1 th:text="${user.firstName + ' ' + user.lastName + ' ' + '(' +session.accType+ ')'}"></h1>
 	  <h2>Rooms</h2>
 	  <p th:text="'Date: ' + ${dateNow}"/>
 	  
