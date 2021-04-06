@@ -89,16 +89,10 @@
 						th:if="${tempRoom.status == 'Available'}">
 						Update
 				</a>
-				<a
-						class="btn btn-info" 
-						th:href="@{/index/updateRoom(roomId=${tempRoom.room_id})}"
-						onclick="if(!(confirm('It will cancel the Reservation, Proceed?'))) return false"
-						th:if="${tempRoom.status == 'Reserved'}">
-						Update
-				</a>
 				&nbsp
 				<a
 						class="btn btn-danger" 
+						th:if="${tempRoom.status == 'Available'}"
 						th:href="@{/index/deleteRoom(roomId=${tempRoom.room_id})}"
 						onclick="if(!(confirm('Are you sure you want to delete this room?'))) return false">
 						Delete
